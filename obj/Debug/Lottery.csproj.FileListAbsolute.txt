@@ -1,0 +1,13 @@
+F:\WorkList\Lottery\Lottery\bin\Debug\Lottery.exe.config
+F:\WorkList\Lottery\Lottery\bin\Debug\Lottery.exe
+F:\WorkList\Lottery\Lottery\bin\Debug\Lottery.pdb
+F:\WorkList\Lottery\Lottery\obj\Debug\Lottery.csprojResolveAssemblyReference.cache
+F:\WorkList\Lottery\Lottery\obj\Debug\Lottery.Form1.resources
+F:\WorkList\Lottery\Lottery\obj\Debug\Lottery.Properties.Resources.resources
+F:\WorkList\Lottery\Lottery\obj\Debug\Lottery.csproj.GenerateResource.Cache
+F:\WorkList\Lottery\Lottery\obj\Debug\Lottery.exe
+F:\WorkList\Lottery\Lottery\obj\Debug\Lottery.pdb
+F:\WorkList\Lottery\Lottery\bin\Debug\Lottery.exe.manifest
+F:\WorkList\Lottery\Lottery\bin\Debug\Lottery.application
+F:\WorkList\Lottery\Lottery\obj\Debug\Lottery.exe.manifest
+F:\WorkList\Lottery\Lottery\obj\Debug\Lottery.application

@@ -12,6 +12,7 @@ namespace Lottery
 {
     public partial class Form1 : Form
     {
+        public Boolean Access = false;
         private Gioble oData = new Gioble() { };
         public Form1()
         {
@@ -67,6 +68,7 @@ namespace Lottery
                 textBox2.Text = sVal;
                 textBox2.SelectionStart = textBox2.Text.Length;
                 textBox2.SelectionLength = textBox2.Text.Length;
+                textBox2.ScrollToCaret();
             }
             else if (((int)e.KeyChar < 48 | (int)e.KeyChar > 57) & (int)e.KeyChar != 8 & (int)e.KeyChar != 44 & (int)e.KeyChar != 127)
                 e.Handled = true;
@@ -212,5 +214,19 @@ namespace Lottery
             public List<Int32> oArr { get; set; }
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmNews oFrm = new FrmNews() { };
+                oFrm.ShowDialog();
+                if (oFrm.Access == false)
+                    this.Close();
+            }
+            catch(Exception _sEx)
+            {
+                MessageBox.Show(_sEx.Message);
+            }
+        }
     }
 }

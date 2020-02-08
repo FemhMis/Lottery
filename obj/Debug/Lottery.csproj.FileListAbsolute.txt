@@ -11,3 +11,4 @@ F:\WorkList\Lottery\Lottery\bin\Debug\Lottery.exe.manifest
 F:\WorkList\Lottery\Lottery\bin\Debug\Lottery.application
 F:\WorkList\Lottery\Lottery\obj\Debug\Lottery.exe.manifest
 F:\WorkList\Lottery\Lottery\obj\Debug\Lottery.application
+F:\WorkList\Lottery\Lottery\obj\Debug\Lottery.FrmNews.resources

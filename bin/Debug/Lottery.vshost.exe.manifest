@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Lottery.exe" size="14848">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Lottery.exe" size="17408">
       <assemblyIdentity name="Lottery" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>mq73gYkHe1DNJAmem3KJRn4qR7iW8uxj/Pzs9OsgapI=</dsig:DigestValue>
+        <dsig:DigestValue>WTq4SqWIIqlQ3JwnzpMGNO7brR8xMafosC61/djuw7E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

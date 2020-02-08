@@ -58,13 +58,11 @@ namespace Lottery
                 {
                     string sTMP2 = sTMP.IndexOf(";") != -1 ? sTMP.Substring(0, sTMP.IndexOf(";")) : sTMP;
                     if (CheckListSignificant(sTMP2))
-                    {
                         sVal += sTMP2 + ";檢核成功，" + ReportResult(sTMP2) + "\r\n";
-                    }
+                    else if (sTMP.Trim() == "")
+                        sVal += sTMP2;
                     else
-                    {
                         sVal += sTMP2 + ";檢核失敗，不做判斷" + "\r\n";
-                    }
                 }
                 textBox2.Text = sVal;
                 textBox2.SelectionStart = textBox2.Text.Length;
@@ -160,21 +158,7 @@ namespace Lottery
                     label1.Text = "您輸入的數字有重副";
                     return false;
                 }
-                if (oList.Count == 7)
-                {
-                    oData = new Gioble() { isLock = true, isSpecial = false, oArr = oList };
-                }
-                else
-                {
-                    if (MessageBox.Show("您輸入的是春節大紅包嗎？", "請確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        oData = new Gioble() { isLock = true, isSpecial = true, oArr = oList };
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
+                return true;
             }
             else
             {
@@ -195,7 +179,13 @@ namespace Lottery
         {
             if (CheckListSignificant(_sVal, true))
             {
-                oData = new Gioble() { isLock = true, oArr = _sVal.Split(new string[] { "," }, StringSplitOptions.None).ToList().Select(x => Convert.ToInt32(x)).ToList() };
+                var oList = _sVal.Split(new string[] { "," }, StringSplitOptions.None).ToList().Select(x => Convert.ToInt32(x)).ToList();
+                if (oList.Count == 7)
+                    oData = new Gioble() { isLock = true, oArr = oList };
+                else if (MessageBox.Show("請問您輸入的是春節大紅包嗎？", "請確認", MessageBoxButtons.YesNo)== DialogResult.Yes)
+                    oData = new Gioble() { isLock = true, isSpecial = true, oArr = oList };
+                else
+                    return false;
                 return true;
             }
             else

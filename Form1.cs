@@ -98,18 +98,28 @@ namespace Lottery
         {
             List<Int32> oList = _sVal.Split(new string[] { "," }, StringSplitOptions.None).ToList().Select(x => Convert.ToInt32(x)).ToList();
             List<Int32> oResult = oData.oArr.Where(x=> oList.Contains(x)).ToList();
-            if (oResult.Count == 3)
-                return "重複三個數字，恭喜你有中獎。";
-            else if (oResult.Count == 4)
-                return "重複四個數字，恭喜你中獎。";
-            else if (oResult.Count == 5)
-                return "重複五個數字，恭喜您中大獎。";
-            else if (oResult.Count == 6)
-                return "重複六個數字，你該搬家了。";
-            else if (oResult.Count == 7)
-                return "重複七個數字，該看眼科了，樂透不會有七碼數字。";
+            if (oData.isSpecial == true)
+            {
+                if (oResult.Count == 6)
+                    return "重複六個數字，恭喜你抽中紅包。";
+                else
+                    return "銘謝惠顧，下次再加油";
+            }
             else
-                return "銘謝惠顧，下次再加油";
+            {
+                if (oResult.Count == 3)
+                    return "重複三個數字，恭喜你有中獎。";
+                else if (oResult.Count == 4)
+                    return "重複四個數字，恭喜你中獎。";
+                else if (oResult.Count == 5)
+                    return "重複五個數字，恭喜您中大獎。";
+                else if (oResult.Count == 6)
+                    return "重複六個數字，你該搬家了。";
+                else if (oResult.Count == 7)
+                    return "重複七個數字，該看眼科了，樂透不會有七碼數字。";
+                else
+                    return "銘謝惠顧，下次再加油";
+            }
         }
         Boolean CheckListSignificant(string _sVal, Boolean _First = false)
         {
@@ -140,17 +150,31 @@ namespace Lottery
             }
             if (_First)
             {
-                if (oList.Count != 7)
+                if (oList.Count < 7)
                 {
-                    label1.Text = "您輸入的數字不滿七組(樂透預設是七組數字)";
+                    label1.Text = "您輸入的數字不滿七組(樂透預設是七組數字)；春節大紅包超過七組數字";
                     return false;
                 }
-                if (oList.GroupBy(x => x).ToList().Count < 7)
+                if (oList.GroupBy(x => x).Select(x=>x.First()).ToList().Count != oList.Count)
                 {
                     label1.Text = "您輸入的數字有重副";
                     return false;
                 }
-                oData = new Gioble() { isLock = true, oArr = oList };
+                if (oList.Count == 7)
+                {
+                    oData = new Gioble() { isLock = true, isSpecial = false, oArr = oList };
+                }
+                else
+                {
+                    if (MessageBox.Show("您輸入的是春節大紅包嗎？", "請確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        oData = new Gioble() { isLock = true, isSpecial = true, oArr = oList };
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
             else
             {
@@ -190,9 +214,11 @@ namespace Lottery
             public Gioble()
             {
                 isLock = false;
+                isSpecial = false;
                 oArr = new List<int>() { };
             }
             public Boolean isLock { get; set; }
+            public Boolean isSpecial { get; set; }
             public List<Int32> oArr { get; set; }
         }
 
